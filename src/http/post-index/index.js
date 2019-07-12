@@ -1,26 +1,32 @@
-const { IncomingWebhook } = require('@slack/webhook')
+const {
+  IncomingWebhook
+} = require('@slack/webhook')
 const webhook = new IncomingWebhook(process.env.WEBHOOK_URL)
 const users = ["mackenzie-gray", "arvinsingla", "ddamico-ecobee", "nataliegirard", "heymiguel", "duthied", "ndaversa"]
 
 exports.handler = async function http(request) {
-  const { action, issue, repository, sender } = request.body
-
-  const text = [
-    `<${issue.html_url}|Issue ${action}: ${issue.title}>`,
-    `for <${repository.html_url}|${repository.name}>`,
-    `by <${sender.html_url}|${sender.login}>`
-  ].join('\n')
+  const {
+    action,
+    pull_request,
+    repository,
+    sender
+  } = request.body
 
   if (users.includes(sender.login)) {
     webhook.send({
-      text: text
+      text: `
+        Pull Request <${pull_request.html_url}| #${pull_request.number}> ${action} by <${sender.html_url}|${sender.login}> for <${repository.html_url}|${repository.name}>
+        *${pull_request.title}*
+      `
     })
   }
 
   return {
     status: 200,
     type: 'application/json',
-    body: JSON.stringify({ ok: true }),
+    body: JSON.stringify({
+      ok: true
+    }),
   }
 }
 
