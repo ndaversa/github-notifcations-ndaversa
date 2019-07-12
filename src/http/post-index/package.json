@@ -2,6 +2,7 @@
   "name": "gh-notify-post-index",
   "dependencies": {
     "@architect/data": "^3.0.5",
-    "@architect/functions": "^3.2.2"
+    "@architect/functions": "^3.2.2",
+    "@slack/webhook": "^5.0.0"
   }
 }
