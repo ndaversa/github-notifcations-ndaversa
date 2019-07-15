@@ -4,7 +4,7 @@ const {
 const webhook = new IncomingWebhook(process.env.WEBHOOK_URL)
 const webhookAll = new IncomingWebhook(process.env.WEBHOOK_URL_ALL)
 const users = ["mackenzie-gray", "arvinsingla", "ddamico-ecobee", "nataliegirard", "heymiguel", "duthied", "ndaversa"]
-const actions = ["created", "closed", "merged", "reopened"]
+const actions = ["created", "opened", "closed", "merged", "reopened"]
 
 exports.handler = async function http(request) {
   const {
