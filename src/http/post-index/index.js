@@ -20,12 +20,12 @@ exports.handler = async function http(request) {
   `
 
   if (actions.includes(action)) {
-    webhookAll.send({
+    await webhookAll.send({
       text: text
     })
 
     if (users.includes(sender.login)) {
-      webhook.send({
+      await webhook.send({
         text: text
       })
     }
