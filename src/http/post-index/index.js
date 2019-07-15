@@ -4,6 +4,7 @@ const {
 const webhook = new IncomingWebhook(process.env.WEBHOOK_URL)
 const webhookAll = new IncomingWebhook(process.env.WEBHOOK_URL_ALL)
 const users = ["mackenzie-gray", "arvinsingla", "ddamico-ecobee", "nataliegirard", "heymiguel", "duthied", "ndaversa"]
+const actions = ["created", "closed", "merged", "reopened"]
 
 exports.handler = async function http(request) {
   const {
@@ -18,15 +19,16 @@ exports.handler = async function http(request) {
     *${pull_request.title}*
   `
 
-  if (users.includes(sender.login)) {
-    webhook.send({
-      text: text
-    })
-  }
-  else {
+  if (actions.includes(action)) {
     webhookAll.send({
       text: text
     })
+
+    if (users.includes(sender.login)) {
+      webhook.send({
+        text: text
+      })
+    }
   }
 
   return {
@@ -37,4 +39,3 @@ exports.handler = async function http(request) {
     }),
   }
 }
-
