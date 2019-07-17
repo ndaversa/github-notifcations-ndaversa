@@ -5,8 +5,8 @@ Follow along with the quickstart guide to get setup on AWS and return
 here when complete.
 
 Checklist of things needed upon return:
-[] ~/.aws/credentials setup
-[] `npx` command available
+[ ] ~/.aws/credentials setup
+[ ] `npx` command available
 
 ## Create a Slack destination for your Github Activity to be delivered to
 1. Create a channel either private or public on your Slack
