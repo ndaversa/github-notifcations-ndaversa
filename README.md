@@ -20,7 +20,7 @@ Checklist of things needed upon return:
 ## Steps to get this code up and running on Lambda
 1. `npm install` in the root of this repo
 2. `npm install` in `src/http/post-index/`
-3. `npx env production WEBHOOK_URL_ALL <SLACKURL>
+3. `npx env production WEBHOOK_URL_ALL <SLACKURL>`
 Note: you should be putting the actual URL for the command above
 3. `npx deploy production`
 
