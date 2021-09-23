@@ -22,9 +22,9 @@ Checklist of things needed upon return:
 2. `npm install` in `src/http/post-index/`
 3. `npx env production WEBHOOK_URL_ALL <SLACKURL>`
 Note: you should be putting the actual URL for the command above
-4. There are also ENV's for <WEB_USERS> and <USERS> which are comma
+4. There are also ENV's for <USERS> which are comma
    separated list of usernames that will send notifications to channels
-   <WEBHOOK_URL_WEB> and <WEBHOOK_URL> respectively
+   <WEBHOOK_URL>
 5. `npx deploy production`
 
 At this point you should have the main function running up on AWS
