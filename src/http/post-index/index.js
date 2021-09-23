@@ -3,9 +3,7 @@ const {
 } = require('@slack/webhook')
 const webhook = new IncomingWebhook(process.env.WEBHOOK_URL)
 const webhookAll = new IncomingWebhook(process.env.WEBHOOK_URL_ALL)
-const webhookWeb = new IncomingWebhook(process.env.WEBHOOK_URL_WEB)
 const users = process.env.USERS.split(",")
-const webUsers = process.env.WEB_USERS.split(",")
 const actions = ["created", "opened", "closed", "merged", "reopened"]
 
 exports.handler = async function http(request) {
@@ -28,12 +26,6 @@ exports.handler = async function http(request) {
 
     if (users.includes(sender.login)) {
       await webhook.send({
-        text: text
-      })
-    }
-
-    if (webUsers.includes(sender.login)) {
-      await webhookWeb.send({
         text: text
       })
     }
